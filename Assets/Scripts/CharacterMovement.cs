@@ -2,133 +2,103 @@
 
 public class CharacterMovement : MonoBehaviour
 {
-    public Animator animator = null;
     public Rigidbody2D rigid = null;
+    public Animator animator = null;
     public CircleCollider2D bottomCollider = null;
-    public float speed = 2f;
-    public float jumpPower = 10f;
-    public AnimationClip attackClip = null;
-    public AnimationClip airAttackClip = null;
 
-    private bool isMove = false;
-    private bool isReverse = false;
-    private bool isDontMove = false;
+    public float speed = 0f;
+    public float jumpPower = 0f;
+
+    private bool isLeft = false;
+    private bool isLock = false;
+
+    public void Lock() => isLock = true;
+    public void UnLock() => isLock = false;
 
     private void Update()
     {
-        if (isDontMove) return;
-
-        OnAttackControll();
-        OnMoveControll();
-
+        UpdateMove();
+        UpdateAction();
     }
 
-    private void OnAttackControll()
+    private void UpdateMove()
     {
-
-        if(Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            animator.SetTrigger("Attack");
-
-            if(animator.GetBool("isJump")||animator.GetBool("isJumpDown"))
+            animator.SetBool("isMove", true);
+            if (!isLock && !isLeft)
             {
-                Invoke("OnMoveContinue", airAttackClip.length);
-            }
-            else
-            {
-                isDontMove = true;
-                isMove = false;
-
-                CancelInvoke("OnMoveContinue");
-                Invoke("OnMoveContinue", attackClip.length);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                isLeft = true;
             }
         }
-    }
-
-    private void OnMoveControll()
-    {
-        if(Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
-            Move(false);
-        }
-        else if(Input.GetKey(KeyCode.A))
-        {
-            Move(true);
+            animator.SetBool("isMove", true);
+            if (!isLock && isLeft)
+            {
+                transform.rotation = Quaternion.identity;
+                isLeft = false;
+            }
         }
         else
-        {
-            isMove = false;
-        }
-        
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if(!animator.GetBool("isJump"))
-            {
-                rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            animator.SetBool("isMove", false);
 
+        if (!animator.GetBool("isJump") && !animator.GetBool("isJumpDown"))
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
                 animator.SetBool("isJump", true);
-                animator.SetBool("isJumpDown", false);
+                rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             }
         }
-
-            animator.SetBool("isMove", isMove);
-
     }
 
-    private void FixedUpdate()
-    {
-        if (isMove)
-            transform.Translate(speed * Time.fixedDeltaTime, 0, 0);
-        
-        Jumping();
-    }
-
-    private void Move(bool isLeft)
-    {
-        isMove = true;
-        
-        if(isReverse != isLeft)
-        {
-            //삼항 연산자 
-            // isLeft ? -> if(isLeft == true)
-            // !isLeft ? -> if(isLeft != true)
-            transform.localRotation = isLeft ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
-
-            isReverse = isLeft;
-        }
-
-    }
-
-    
-
-    private void Jumping()
+    private void UpdateJumping()
     {
         if (rigid.velocity.y == 0) return;
-        if(rigid.velocity.y < -Mathf.Epsilon)
+        if (rigid.velocity.y <= -Mathf.Epsilon)
         {
             bottomCollider.enabled = true;
             animator.SetBool("isJumpDown", true);
-            animator.SetBool("isMove", false);
         }
-        //// Mathf.Epsilon ? 0보다는 높은 수 (0.0001)
-
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Tile"))
+        if (collision.CompareTag("Tile"))
         {
             animator.SetBool("isJump", false);
             animator.SetBool("isJumpDown", false);
 
-            if(rigid.velocity.y == 0)
-                bottomCollider.enabled = false;
+            if (rigid.velocity.y == 0) bottomCollider.enabled = false;
         }
     }
 
-    private void OnMoveContinue()
+    private void UpdateAction()
     {
-        isDontMove = false;
-        animator.ResetTrigger("Attack");
+        if (isLock) return;
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            animator.SetTrigger("Attack");
+            Lock();
+        }
     }
+
+    private void FixedUpdate()
+    {
+        UpdateJumping();
+
+        if (animator.GetBool("isMove"))
+        {
+            if (isLock)
+            {
+                if (!animator.GetBool("isJump")) return;
+            }
+
+            transform.Translate(speed * Time.fixedDeltaTime, 0, 0);
+        }
+        
+    }
+
 }
