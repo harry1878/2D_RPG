@@ -1,7 +1,28 @@
 fileFormatVersion: 2
 guid: 48be89bfe3852df49b439a513521073f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7178801690491558004
+    second: Posion_0
+  - first:
+      213: -5276507945206129679
+    second: Posion_1
+  - first:
+      213: 6577459422373266662
+    second: Posion_2
+  - first:
+      213: -197193015801037315
+    second: Posion_3
+  - first:
+      213: 6327108792684667271
+    second: Posion_4
+  - first:
+      213: -8506777238476921406
+    second: Posion_5
+  - first:
+      213: -932282844647402667
+    second: Posion_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,11 +106,158 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Posion_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c87e64db5e5cf5c90800000000000000
+      internalID: -7178801690491558004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Posion_1
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 2
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fb567fdaf316c6b0800000000000000
+      internalID: -5276507945206129679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Posion_2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 2
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e4ca1bee74d74b50800000000000000
+      internalID: 6577459422373266662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Posion_3
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 2
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfdbdf43ffd634df0800000000000000
+      internalID: -197193015801037315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Posion_4
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 0
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781683bace76ec750800000000000000
+      internalID: 6327108792684667271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Posion_5
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 0
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c564352c2bd1f980800000000000000
+      internalID: -8506777238476921406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Posion_6
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 553d99631bddf03f0800000000000000
+      internalID: -932282844647402667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d7600f816c6482343a685aa22d602542
     internalID: 0
     vertices: []
     indices: 

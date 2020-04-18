@@ -72,7 +72,11 @@ MonoBehaviour:
   animator: {fileID: 7017158685898958223}
   hitCollider: {fileID: 0}
   speed: 0.5
-  MaxHp: 10
+  moneyPrefab: {fileID: 8329050108878735253, guid: fe02da421360b9846a4f20ed0c2c60ca,
+    type: 3}
+  MaxHp: 5
+  prize: 2
+  spawnTime: 10
   currentHp: 0
 --- !u!61 &8540333261477402981
 BoxCollider2D:

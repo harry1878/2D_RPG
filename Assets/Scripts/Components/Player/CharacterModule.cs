@@ -10,7 +10,10 @@ public class CharacterModule : CharacterMovement
     public float MaxHp = 10f;
     public float Damage = 1f;
 
-    public float currentHp;
+    private float currentHp;
+    private CharacterInventory inventory = new CharacterInventory();
+
+    public CharacterInventory GetInventory { get => inventory; }
 
     private void Awake()
     {
